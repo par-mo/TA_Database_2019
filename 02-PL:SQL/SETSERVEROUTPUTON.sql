@@ -1,4 +1,5 @@
-set serveroutput on
+SET SERVEROUTPUT ON
+-- creating a new procedure 
 
 DECLARE
     student_id number(9) NOT NULL := 32765283;
@@ -10,3 +11,11 @@ BEGIN
     dbms_output.put_line(' - Name: ' || student_name);
     dbms_output.put_line(' - Faculty: ' || student_faculty);
 END;
+
+
+
+
+
+
+
+

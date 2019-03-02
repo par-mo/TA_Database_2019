@@ -1,3 +1,11 @@
+/* 
+Author: M.Parhizkar 17/02/2019 - Session 2 
+Teaching assistance database course - Spring 2019 
+University of Geneva 
+*/
+-- -- --------------------------------------------------------
+
+-- DROP TABLE agents_companies CASCADE CONSTRAINTS; 
 
 CREATE TABLE agents_companies (
   COMPANY_ID varchar2(6) NOT NULL ,
@@ -10,16 +18,16 @@ CREATE TABLE agents_companies (
 -- -- --------------------------------------------------------
 --
 
-INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (18, 'Order All', 'Boston');
-INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (15, 'Jack Hill Ltd', 'London');
-INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (16, 'Akas Foods', 'Delhi');
-INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (17, 'Foodies.', 'London');
-INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (19, 'sip-n-Bite.', 'New York');
+INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (18, 'JaJones', 'New York');
+INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (15, 'Man Hill Ltd', 'Beijing');
+INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (16, 'Historicia', 'Vienna');
+INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (17, 'Mystyle', 'Boston');
+INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (19, 'Fruits_Improt', 'Paris');
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
 
-DROP TABLE agents CASCADE CONSTRAINTS; 
+--DROP TABLE agents CASCADE CONSTRAINTS; 
 
 CREATE TABLE agents (
   AGENT_CODE varchar2(6) NOT NULL,
@@ -176,8 +184,7 @@ INSERT INTO my_orders (MYORD_NUM, MYORD_AMOUNT, ADVANCE_AMOUNT, MYORD_DATE, CUST
 -- --------------------------------------------------------
 
 --
--- Table structure for table `despatch`
--- DROP TABLE deliveries CASCADE CONSTRAINTS ;
+ -- DROP TABLE deliveries CASCADE CONSTRAINTS ;
 
 CREATE TABLE deliveries (
   DEL_NUM varchar2(7) NOT NULL,
@@ -202,7 +209,8 @@ INSERT INTO deliveries (DEL_NUM, DEL_DATE ,DEL_COST , MYORD_NUM ,AGENT_CODE ,CUS
 INSERT INTO deliveries (DEL_NUM, DEL_DATE ,DEL_COST , MYORD_NUM ,AGENT_CODE ,CUST_CODE) VALUES ('D00054',TO_DATE('2011/11/10','yyyy/mm/dd'),9100,'200128','A002','C00004'); 
 INSERT INTO deliveries (DEL_NUM, DEL_DATE ,DEL_COST , MYORD_NUM ,AGENT_CODE ,CUST_CODE) VALUES ('D00208',TO_DATE('2014/12/15','yyyy/mm/dd'),2550,'200132','A005','C00009'); 
 -- --------------------------------------------------------
---DROP TABLE items;
+--DROP TABLE items CASCADE CONSTRAINTS;
+
 CREATE TABLE items (
   ITEM_ID varchar2(6) NOT NULL,
   ITEM_NAME varchar2(25),
@@ -221,7 +229,7 @@ INSERT INTO items (ITEM_ID, ITEM_NAME, ITEM_UNIT, COMPANY_ID) VALUES('5555', 'SO
 INSERT INTO items (ITEM_ID, ITEM_NAME, ITEM_UNIT, COMPANY_ID) VALUES('7147', 'BoomBOX', 'ZUZ',null);
 
 -- --------------------------------------------------------
--- DROP TABLE my_stock;
+-- DROP TABLE my_stock  CASCADE CONSTRAINTS;
 
 CREATE TABLE  my_stock (
   stock_code varchar2(6) NOT NULL,
@@ -244,7 +252,9 @@ INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES
 INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES ('S042', '43650', 'SUP_DMER4785',0);
 
 
-
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+----------------------- SOME QUERIES -----------------------
 
 SELECT agents.agent_code, agents.agent_name, agents_companies.company_name
 FROM agents 

@@ -1,49 +1,3 @@
-DROP TABLE agents CASCADE CONSTRAINTS; 
-
-CREATE TABLE agents (
-  AGENT_CODE varchar2(6) NOT NULL,
-  AGENT_NAME varchar2(40) NOT NULL,
-  WORKING_AREA varchar2(35),
-  COMMISSION number(8,2),
-  PHONE_NO varchar2(15),
-  COUNTRY varchar2(25),
-  CONSTRAINT agents_pk PRIMARY KEY (AGENT_CODE)
-) ;
-
---
--- Dumping data for table `agents`
---
-
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A007', 'Ramasundar', 'Bangalore', '0.15', '077-25814763', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A003', 'Alex', 'London', '0.13', '075-12458969', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A008', 'Alford', 'New York', '0.12', '044-25874365', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A011', 'Ravi Kumar', 'Bangalore', '0.15', '077-45625874', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A010', 'Santakumar', 'Chennai', '0.14', '007-22388644', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A012', 'Lucida', 'San Jose', '0.12', '044-52981425', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A005', 'Anderson', 'Brisban', '0.13', '045-21447739', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A001', 'Subbarao', 'Bangalore', '0.14', '077-12346674', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A002', 'Mukesh', 'Mumbai', '0.11', '029-12358964', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A006', 'McDen', 'London', '0.15', '078-22255588', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A004', 'Ivan', 'Torento', '0.15', '008-22544166', '\r');
-INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY) VALUES
-('A009', 'Benjamin', 'Hampshair', '0.11', '008-22536178', '\r');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `company`
---
 
 CREATE TABLE agents_companies (
   COMPANY_ID varchar2(6) NOT NULL ,
@@ -53,7 +7,7 @@ CREATE TABLE agents_companies (
 ) ;
 
 --
--- Dumping data for table `company`
+-- -- --------------------------------------------------------
 --
 
 INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (18, 'Order All', 'Boston');
@@ -61,6 +15,55 @@ INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (15
 INSERT INTO agents_companies(COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (16, 'Akas Foods', 'Delhi');
 INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES (17, 'Foodies.', 'London');
 INSERT INTO agents_companies (COMPANY_ID, COMPANY_NAME, COMPANY_CITY) VALUES  (19, 'sip-n-Bite.', 'New York');
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+DROP TABLE agents CASCADE CONSTRAINTS; 
+
+CREATE TABLE agents (
+  AGENT_CODE varchar2(6) NOT NULL,
+  AGENT_NAME varchar2(40) NOT NULL,
+  WORKING_AREA varchar2(35),
+  COMMISSION number(8,2),
+  PHONE_NO varchar2(15),
+  COUNTRY varchar2(25),
+  COMPANY_ID varchar2(6) NOT NULL ,
+  CONSTRAINT agents_company_fk FOREIGN KEY (COMPANY_ID) REFERENCES agents_companies(COMPANY_ID),
+  CONSTRAINT agents_pk PRIMARY KEY (AGENT_CODE)
+) ;
+
+------------------------------------------------------------
+
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A007', 'Ramasundar', 'Bangalore', '0.15', '077-25814763','\r','19');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A003', 'Alex', 'London', '0.13', '075-12458969', 'IND','17');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A008', 'Alford', 'New York', '0.12', '044-25874365', 'FR','19');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A011', 'Ravi Kumar', 'Bangalore', '0.15', '077-45625874', 'CHE','19');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A010', 'Santakumar', 'Chennai', '0.14', '007-22388644', 'TR','16');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A012', 'Lucida', 'San Jose', '0.12', '044-52981425', 'TUN','19');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A005', 'Anderson', 'Brisban', '0.13', '045-21447739', 'USA','17');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A001', 'Subbarao', 'Bangalore', '0.14', '077-12346674', '\r','19');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A002', 'Mukesh', 'Mumbai', '0.11', '029-12358964', '\r','16');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A006', 'McDen', 'London', '0.15', '078-22255588', 'TUN','16');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A004', 'Ivan', 'Torento', '0.15', '008-22544166', 'FIN','16');
+INSERT INTO agents (AGENT_CODE, AGENT_NAME, WORKING_AREA, COMMISSION, PHONE_NO, COUNTRY, COMPANY_ID) VALUES
+('A009', 'Benjamin', 'Hampshair', '0.11', '008-22536178', 'GER','17');
+
+-- --------------------------------------------------------
+
+--
+
 
 -- --------------------------------------------------------
 
@@ -239,3 +242,28 @@ INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES
 INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES ('S021', '1025', 'SUP_DMER6453',21);
 INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES ('S308', '3014', 'SUP_DMER0125', 12);
 INSERT INTO my_stock (stock_code, ITEM_ID, ITEM_supplier, ITEM_available) VALUES ('S042', '43650', 'SUP_DMER4785',0);
+
+
+
+
+SELECT agents.agent_code, agents.agent_name, agents_companies.company_name
+FROM agents 
+INNER JOIN agents_companies
+ON AGENTS.COMPANY_ID = AGENTS_COMPANIES.COMPANY_ID;
+
+
+
+CREATE VIEW view_agents AS
+SELECT agents.agent_code, agents.agent_name, agents_companies.company_name
+FROM agents 
+RIGHT JOIN agents_companies
+ON AGENTS.COMPANY_ID = AGENTS_COMPANIES.COMPANY_ID;
+
+
+SELECT agent_name FROM VIEW_AGENTS
+WHERE AGENT_CODE='A003' or AGENT_CODE='A007'; 
+
+
+
+
+SELECT agent_name,country ,working_area FROM agents WHERE agent_code = 'A003'; 

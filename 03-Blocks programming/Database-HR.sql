@@ -136,6 +136,7 @@ CREATE SEQUENCE sequence_manager START WITH 0001 INCREMENT BY 0001 MAXVALUE 0008
 
 
 -------------------SOME data for our TABLES ----------------------
+--region_id, region_name
 INSERT INTO regions VALUES (seq_regions.NEXTVAL,'European Union'); --0001
 INSERT INTO regions VALUES (seq_regions.NEXTVAL,'Central America');--0002
 INSERT INTO regions VALUES (seq_regions.NEXTVAL,'North America');--0003
@@ -161,7 +162,7 @@ INSERT INTO managers VALUES (sequence_manager.NEXTVAL, 'Micheal',' De Kleine' );
 
 
 -------------------    -------------------   -------------------  
-
+--country_id, country_name, region_id
 INSERT INTO countries VALUES (seq_countries.NEXTVAL,'Norway',0001);--0001
 INSERT INTO countries VALUES (seq_countries.NEXTVAL,'France',0001);--0002
 INSERT INTO countries VALUES (seq_countries.NEXTVAL,'Spain',0001);--0003

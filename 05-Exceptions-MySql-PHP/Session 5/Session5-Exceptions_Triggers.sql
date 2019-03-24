@@ -102,33 +102,6 @@ CREATE OR REPLACE PROCEDURE loadarray IS
   
   */
   
-------------------------------Trigger Example---------------------------------
-/*
-The following program creates a row-level trigger for the employees table that 
-would fire for INSERT or UPDATE or DELETE operations performed on the employees table. 
-This trigger will display the salary difference between the old values and new values:
-*/
-CREATE OR REPLACE TRIGGER display_emp_sal_changes 
-BEFORE DELETE OR INSERT OR UPDATE ON employees 
-FOR EACH ROW 
-WHEN (NEW.employee_ID > 0) 
-DECLARE 
-   sal_diff number; 
-BEGIN 
-   sal_diff := :NEW.salary  - :OLD.salary; 
-   dbms_output.put_line('Old salary: ' || :OLD.salary); 
-   dbms_output.put_line('New salary: ' || :NEW.salary); 
-   dbms_output.put_line('Salary difference: ' || sal_diff); 
-END; 
-/ 
-
-
-INSERT INTO employees (EMPLOYEE_ID,first_name,last_name,email,phone_number,
-hire_date,job_id,salary,commission_pct,manager_id,departement_id)
-VALUES (100	, Simon,	Xing,	SXING,	515.123.4567,	21.09.89,	AD_PRES	,24000,0.25,150			90 ); 
-------------------------------------------------------------------
-
-
 
 
 

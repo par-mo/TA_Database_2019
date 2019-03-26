@@ -1,3 +1,4 @@
+
 SET serveroutput on;
 
  --------------------Q. 1----------------------------
@@ -15,7 +16,7 @@ END;
 /
 
  -------------------Q. 2----------------------------
-
+SET SERVEROUTPUT ON;
 DECLARE
     n_id employees.employee_id%TYPE := &employee_id;
     n_dept employees.department_id%TYPE;
@@ -27,46 +28,29 @@ BEGIN
         SELECT department_id INTO n_dept
         FROM employees
         WHERE employee_id = n_id;
-        IF (n_dept = 0001) THEN
             SELECT salary, commission_pct, hire_date INTO n_sal, n_com, n_date
             FROM employees
             WHERE employee_id = n_id;
             IF (n_sal > 10000) THEN
-                IF (n_com > .59) THEN
-                    DBMS_OUTPUT.PUT_LINE('### ERROR ### Employee cant have such an augmentation !');
-                ELSE
                     UPDATE employees SET commission_pct = n_com + .40 WHERE employee_id = n_id;
                     DBMS_OUTPUT.PUT_LINE('Employee n°' || n_id || ' got a 40% augmentation');
-                END IF;
-            ELSIF (n_date < DATE '2008-03-19') THEN
-                IF (n_com > .64) THEN
-                    DBMS_OUTPUT.PUT_LINE('### ERROR ### Employee cant have such an augmentation !');
-                ELSE
+            ELSIF (n_sal < 10000 AND n_date < DATE '2009-03-19') THEN
+                
                     UPDATE employees SET commission_pct = n_com + .35 WHERE employee_id = n_id;
                     DBMS_OUTPUT.PUT_LINE('Employee n°' || n_id || ' got a 35% augmentation');
-                END IF;
+               
             ELSIF (n_sal < 3000) THEN
-                IF (n_com > .74) THEN
-                    DBMS_OUTPUT.PUT_LINE('### ERROR ### Employee cant have such an augmentation !');
-                ELSE
+                 
                     UPDATE employees SET commission_pct = n_com + .25 WHERE employee_id = n_id;
                     DBMS_OUTPUT.PUT_LINE('Employee n°' || n_id || ' got a 25% augmentation');
-                END IF;
-            ELSE
-                IF (n_com > .84) THEN
-                    DBMS_OUTPUT.PUT_LINE('### ERROR ### Employee cant have such an augmentation !');
-                ELSE
+               
+            ELSE             
                     UPDATE employees SET commission_pct = n_com + .15 WHERE employee_id = n_id;
                     DBMS_OUTPUT.PUT_LINE('Employee n°' || n_id || ' got a 15% augmentation');
-                END IF;
+        	END IF;
             END IF;
-        ELSE
-            DBMS_OUTPUT.PUT_LINE('### ERROR ### Employee is not in Sales department');
-        END IF;
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('### ERROR ### ID does not exist !');
-    END IF;
 END;
+/
 /--------------------Q. 3----------------------------
 SET SERVEROUTPUT ON; 
 DECLARE

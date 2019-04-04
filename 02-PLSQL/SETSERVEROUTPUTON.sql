@@ -1,5 +1,6 @@
 SET SERVEROUTPUT ON
--- creating a new procedure 
+--With an output: PL/SQl block completed.
+-- creating a new block 
 
 DECLARE
     student_id number(9) NOT NULL := 32765283;

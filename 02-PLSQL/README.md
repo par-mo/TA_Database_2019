@@ -1,3 +1,9 @@
-This course is ideal for students with no prior knowledge of databases/HTML/PHP. The purpose of it is to learn relational database concepts. This course helps students to acquire and practice and see the difference between PL/SQL and MySQL languages. It is also thought to get them ignited with performing SQL access in a data science context.  
+SET SERVEROUTPUT ON
 
-The importance of this course is on hands-on and efficient learning. The students work with real databases, real data science tools, and real-world datasets on their individual space. They will create a database instance in the server; we created for them with the same privileges. Through a series of hands-on practices, they follow the building and running SQL queries in both Oracle and MySQL environments. They further learn how to access databases using XML and PHP, also from Jupyter notebooks using SQL and Python-panda.
+*The idea is to print an argument on the console, which is passed inside dbms_output.put_line.
+
+
+Moreover, the main reason behind is that whatever we pass inside dbms_output.put_line, it will be internally stored inside a buffer in SGA (Shared Global Area) memory area up to 2000 bytes. This buffer is only created when we use  dbms_output package. Furthermore, we need to set the environment variable only once for a session. Also, in order to fetch it from that buffer, we need to set the environment variable for the session. 
+
+
+

@@ -1,5 +1,9 @@
 /*
-A sequence is a set of int numbers in both ascending or descending order, which is generated and approved by some database systems to deliver unique values on demand. The sequences provide an easy way to generate a unique primary key for each row (tuple) in a database.
+A sequence is a set of int numbers in both ascending 
+or descending order, which is generated and approved 
+by some database systems to deliver unique values on 
+demand. The sequences provide an easy way to generate 
+a unique primary key for each row (tuple) in a database.
 */
 
 
